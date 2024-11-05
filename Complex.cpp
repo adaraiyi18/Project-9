@@ -41,7 +41,11 @@ Complex::Complex(double x, double y)
 }
 //========================================================
 // destructor
+// Developer: IyiOluwa Adaramola
 //========================================================
+Complex::~Complex()
+{
+}
 
 //========================================================
 // setReal access method
