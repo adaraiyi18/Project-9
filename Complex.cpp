@@ -49,20 +49,36 @@ Complex::~Complex(void)
 
 //========================================================
 // setReal access method
+// Developer: IyiOluwa Adaramola
 //========================================================
-
+void Complex::setReal(double r)
+{
+    a = r;
+}
 //========================================================
 // getReal access method
+// Developer: IyiOluwa Adaramola
 //========================================================
-
+double Complex::getReal (void) const
+{
+    return a;
+}
 //========================================================
 // setImag
+// Developer: IyiOluwa Adaramola
 //========================================================
-
+void Complex::setImag(double r)
+{
+    b = r;
+}
 //========================================================
 // getImag
+// Developer: IyiOluwa Adaramola
 //========================================================
-
+double Complex::getImag (void) const
+{
+    return b;
+}
 //========================================================
 // assignment operator
 //========================================================
@@ -145,8 +161,23 @@ Complex Complex::operator-(int i) const
 
 //========================================================
 // abs
+// c1.abs()
+// Returns the distance from the origin (0,0) for c1 as a 
+// real number
+// PARAMETER:
+// none
+// RETURN VALUE:
+// returns the square root of the sum of squares of a and b
+// for *this
+// Developer: IyiOluwa Adaramola
 //========================================================
-
+double abs(void) const
+{
+    if (a == 0 && b == 0){
+        return 0.0;
+    }
+    return sqrt((a*a)+(b*b));
+}
 //========================================================
 // equality operator
 //========================================================
