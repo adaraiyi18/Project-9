@@ -99,7 +99,7 @@ Complex Complex::operator+(const Complex &c) const
     Complex comp;
 
     comp.a = a + c.a;
-    comp.b = a + c.b;
+    comp.b = b + c.b;
 
     return comp;
 }
