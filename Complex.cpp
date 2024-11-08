@@ -33,7 +33,7 @@ Complex::Complex()
 // Description:
 //      Creates a new complex number as a copy of an existing one
 // Parameters:
-//      const Complex &c - reference to existing Complex object to copy
+//      const Complex &c - reference to the existing Complex object to copy
 // Returns:
 //      None, but creates a new Complex object as an exact copy
 //========================================================
@@ -47,7 +47,7 @@ Complex::Complex(const Complex &c)
 // destructor
 // Developer: IyiOluwa Adaramola
 //========================================================
-Complex::~Complex(void)
+Complex::~Complex()
 {
 }
 
@@ -70,7 +70,7 @@ Complex::Complex(double x, double y)
 //========================================================
 // Method Name: operator~
 // Developer : Aurora Hodar
-// Description: returns the cojugate of the given complex number, which
+// Description: returns the conjugate of the given complex number, which
 //  means that it has the same real number but the imaginary number is
 //  reversed.
 // Parameters: void
@@ -129,11 +129,11 @@ double Complex::getImag(void) const
 //========================================================
 Complex Complex::operator=(const Complex &c)
 {
-    Complex comp;
-    comp.a = c.a;
-    comp.b = c.b;
-
-    return comp;
+    if (this != &c) {
+        a = c.a;
+        b = c.b;
+    }
+    return *this;
 }
 
 //========================================================
@@ -153,7 +153,7 @@ Complex Complex::operator+(const Complex &c) const
     Complex comp;
 
     comp.a = a + c.a;
-    comp.b = a + c.b;
+    comp.b = b + c.b;
 
     return comp;
 }
@@ -243,7 +243,7 @@ Complex Complex::operator*(double f) const
 
     return comp;
 }
-Complex Complex ::operator*(int i) const
+Complex Complex::operator*(int i) const
 {
     Complex comp;
 
@@ -296,9 +296,14 @@ Complex Complex ::operator/(int i) const
 //========================================================
 Complex Complex::operator^(int p) const
 {
+    double r = sqrt(a * a + b * b); // magnitude
+    double theta = atan2(b, a); // angle
+    double r_p = pow(r, p); // magnitude raised to power p
+    double theta_p = theta * p; // angle multiplied by power p
+
     Complex comp;
-    comp.a = pow(a, p);
-    comp.b = pow(b, p);
+    comp.a = r_p * cos(theta_p);
+    comp.b = r_p * sin(theta_p);
     return comp;
 }
 //========================================================
@@ -372,7 +377,11 @@ istream &operator>>(istream &is, Complex &c)
 //========================================================
 ostream &operator<<(ostream &os, const Complex &c)
 {
-    if (c.a == 0)
+    if (c.a == 0 && c.b == 0)
+    {
+        os << "0";
+    }
+    else if (c.a == 0)
     {
         os << c.b << "i";
     }
@@ -380,10 +389,7 @@ ostream &operator<<(ostream &os, const Complex &c)
     {
         os << c.a;
     }
-    else if (c.a == 0 && c.b == 0)
-    {
-        os << "0";
-    }
+
     else
     {
         if (c.b < 0)
