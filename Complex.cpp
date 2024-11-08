@@ -296,14 +296,9 @@ Complex Complex ::operator/(int i) const
 //========================================================
 Complex Complex::operator^(int p) const
 {
-    double r = sqrt(a * a + b * b); // magnitude
-    double theta = atan2(b, a); // angle
-    double r_p = pow(r, p); // magnitude raised to power p
-    double theta_p = theta * p; // angle multiplied by power p
-
     Complex comp;
-    comp.a = r_p * cos(theta_p);
-    comp.b = r_p * sin(theta_p);
+    comp.a = pow(a, p);
+    comp.b = pow(b, p);
     return comp;
 }
 //========================================================
@@ -350,7 +345,7 @@ bool Complex::operator!=(const Complex &c) const
 }
 //========================================================
 // Method name: operator>>
-// Developer: Sunho Kim
+// Developer: ## Problematic
 // Description:
 //      Reads a complex number from an input stream
 // Parameters:
