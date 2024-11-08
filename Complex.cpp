@@ -42,6 +42,15 @@ Complex::Complex(const Complex &c)
     a = c.a;
     b = c.b;
 }
+
+//========================================================
+// destructor
+// Developer: IyiOluwa Adaramola
+//========================================================
+Complex::~Complex(void)
+{
+}
+
 //========================================================
 // Method name: Complex
 // Developer: Sunho Kim
@@ -186,6 +195,7 @@ Complex Complex::operator-(const Complex &c) const
 
     return comp;
 }
+
 Complex Complex::operator-(double f) const
 {
     Complex comp;

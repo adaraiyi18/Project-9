@@ -18,12 +18,6 @@ int main ( void )
     cout << "c2 = " << c2 << endl;
     cout << "c3 = " << c3 << endl;
 
-    Complex c9(4);
-    cout << "c9 = " << c9 << endl;
-    c9 = -c1;
-    cout << "c9 = " << c9 << endl;
-
-
     // addition tests
     c3 = c1 + c2;
     cout << "c3 = c1+c2 = " << c3 << endl;
